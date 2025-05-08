@@ -1,6 +1,6 @@
 /**
  * problem: 1
- * @ solution
+ * @solution
  */
 
 function formatString(input: string, toUpper?: boolean): string {
@@ -17,14 +17,15 @@ function formatString(input: string, toUpper?: boolean): string {
 
 /**
  * problem: 2
- * @ solution
+ * @solution
  */
 
-interface IItem{ title: string; rating: number };
+interface IItem {
+  title: string;
+  rating: number;
+}
 
-function filterByRating(
-  items: IItem[]
-): IItem[] {
+function filterByRating(items: IItem[]): IItem[] {
   return items.filter((item) => item.rating > 4);
 }
 
@@ -33,6 +34,23 @@ function filterByRating(
 //     { title: "Book B", rating: 3.2 },
 //     { title: "Book C", rating: 5.0 }
 //   ];
-  
-//   console.log(filterByRating(books)); 
-  // Output: [ { title: "Book A", rating: 4.5 }, { title: "Book C", rating: 5.0 } ]
+
+//   console.log(filterByRating(books));
+// Output: [ { title: "Book A", rating: 4.5 }, { title: "Book C", rating: 5.0 } ]
+
+/**
+ * problem: 3
+ * @solution
+ */
+
+function concatenateArrays<T>(...arrays: T[][]): T[] {
+  let array: T[] = [];
+  arrays.forEach((arr) => {
+    array.push(...arr);
+  });
+  return array;
+}
+
+// console.log(concatenateArrays(["a", "b"], ["c"]));       // Output: ["a", "b", "c"]
+// console.log(concatenateArrays([1, 2], [3, 4], [5]));     // Output: [1, 2, 3, 4, 5]
+// console.log(concatenateArrays([]));     // Output: [1, 2, 3, 4, 5]
