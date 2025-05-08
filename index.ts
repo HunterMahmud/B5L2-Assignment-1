@@ -1,8 +1,3 @@
-/**
- * problem: 1
- * @solution
- */
-
 function formatString(input: string, toUpper?: boolean): string {
   if (toUpper === false) {
     return input.toLowerCase();
@@ -11,37 +6,11 @@ function formatString(input: string, toUpper?: boolean): string {
   }
 }
 
-// console.log(formatString("Hello"));          // Output: "HELLO"
-// console.log(formatString("Hello", true));   // Output: "HELLO"
-// console.log(formatString("Hello", false));  // Output: "hello"
-
-/**
- * problem: 2
- * @solution
- */
-
-interface IItem {
-  title: string;
-  rating: number;
-}
-
-function filterByRating(items: IItem[]): IItem[] {
+function filterByRating(
+  items: { title: string; rating: number }[]
+): { title: string; rating: number }[] {
   return items.filter((item) => item.rating > 4);
 }
-
-// const books: IItem[] = [
-//     { title: "Book A", rating: 4.5 },
-//     { title: "Book B", rating: 3.2 },
-//     { title: "Book C", rating: 5.0 }
-//   ];
-
-//   console.log(filterByRating(books));
-// Output: [ { title: "Book A", rating: 4.5 }, { title: "Book C", rating: 5.0 } ]
-
-/**
- * problem: 3
- * @solution
- */
 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
   let array: T[] = [];
@@ -50,15 +19,6 @@ function concatenateArrays<T>(...arrays: T[][]): T[] {
   });
   return array;
 }
-
-// console.log(concatenateArrays(["a", "b"], ["c"]));       // Output: ["a", "b", "c"]
-// console.log(concatenateArrays([1, 2], [3, 4], [5]));     // Output: [1, 2, 3, 4, 5]
-// console.log(concatenateArrays([]));     // Output: [1, 2, 3, 4, 5]
-
-/**
- * problem: 4
- * @solution
- */
 
 class Vehicle {
   private make: string;
@@ -85,15 +45,6 @@ class Car extends Vehicle {
   }
 }
 
-// const myCar = new Car("Toyota", 2020, "Corolla");
-// console.log(myCar.getInfo());   // Output: "Make: Toyota, Year: 2020"
-// console.log(myCar.getModel());  // Output: "Model: Corolla"
-
-/**
- * problem: 5
- * @Solution
- */
-
 function processValue(value: string | number): number {
   if (typeof value === "string") {
     return value.length;
@@ -101,14 +52,6 @@ function processValue(value: string | number): number {
     return value * 2;
   }
 }
-
-// console.log(processValue("hello")); // Output: 5
-// console.log(processValue(10));      // Output: 20
-
-/**
- * problem: 6
- * @solution
- */
 
 interface Product {
   name: string;
@@ -134,16 +77,6 @@ const products = [
   { name: "Bag", price: 50 },
 ];
 
-// console.log(getMostExpensiveProduct(products));
-// console.log(getMostExpensiveProduct([]));
-
-// Output: { name: "Bag", price: 50 }
-
-/**
- * problem: 7
- * @Solution
- */
-
 enum Day {
   Monday,
   Tuesday,
@@ -157,26 +90,15 @@ enum Day {
 function getDayType(day: Day): string {
   return day === Day.Saturday || day === Day.Sunday ? "Weekend" : "Weekday";
 }
-// console.log(getDayType(Day.Monday)); // Output: "Weekday"
-// console.log(getDayType(Day.Sunday)); // Output: "Weekend"
 
-/**
- * problem: 8
- * @Solution
- */
-
- async function squareAsync(n: number): Promise<number>{
-  return new Promise((resolve, reject)=> {
-    if(n < 0){
-      reject('Error: Negative number not allowed')
+async function squareAsync(n: number): Promise<number> {
+  return new Promise((resolve, reject) => {
+    if (n < 0) {
+      reject("Error: Negative number not allowed");
+    } else {
+      setTimeout(() => {
+        resolve(n * n);
+      }, 1000);
     }
-    else{
-      setTimeout(()=> {
-        resolve(n*n);
-      }, 1000)
-    }
-  })
- }
-
-//  squareAsync(4).then(console.log);        // Output after 1s: 16
-// squareAsync(-3).catch(console.error);    // Output: Error: Negative number not allowed
+  });
+}
