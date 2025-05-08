@@ -131,10 +131,31 @@ function getMostExpensiveProduct(products: Product[]): Product | null {
 const products = [
   { name: "Pen", price: 10 },
   { name: "Notebook", price: 25 },
-  { name: "Bag", price: 50 }
+  { name: "Bag", price: 50 },
 ];
 
-// console.log(getMostExpensiveProduct(products));  
-// console.log(getMostExpensiveProduct([]));  
+// console.log(getMostExpensiveProduct(products));
+// console.log(getMostExpensiveProduct([]));
 
 // Output: { name: "Bag", price: 50 }
+
+/**
+ * problem: 7
+ * @Solution
+ */
+
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+function getDayType(day: Day): string {
+  return day === Day.Saturday || day === Day.Sunday ? "Weekend" : "Weekday";
+}
+// console.log(getDayType(Day.Monday)); // Output: "Weekday"
+// console.log(getDayType(Day.Sunday)); // Output: "Weekend"
